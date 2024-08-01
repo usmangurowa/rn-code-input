@@ -11,36 +11,55 @@ _**It support's Expo**_
 #### npm
 
 ```sh
-npm i rn-screen-keyboard
+npm i rn-code-input
 ```
 #### yarn
 
 ```sh
-yarn add rn-screen-keyboard
+yarn add rn-code-input
 ```
 
 ## Example
 
 ```sh
 import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+
 import RNScreenKeyboard from "rn-screen-keyboard";
+import RNCodeInput from "rn-code-input";
 
 export default function App() {
   const [value, setValue] = React.useState<string>("");
   return (
     <View style={styles.container}>
-      <TextInput value={value} style={styles.input} />
-      <RNScreenKeyboard
-        textStyle={{ color: "gray" }}
-        backspaceTint={"gray"}
-        cellStyle={{
-          borderRadius: 100,
-          backgroundColor: "lightblue",
-          margin: 5,
-        }}
+      <RNCodeInput
         value={value}
-        onKeyPress={(val: string) => setValue(val)}
+        length={5}
+        activeBoxStyle={{
+          borderColor: "red"
+        }}
+        inActiveBoxStyle={{
+          borderColor: "gray"
+        }}
+        boxStyle={{
+          borderRadius: 99,
+          marginHorizontal: 5
+        }}
+        hide
+      />
+      <RNScreenKeyboard
+        value={value}
+        onKeyPress={setValue}
+        cellStyle={{
+          borderRadius: 99
+        }}
+        Footer={null}
+        rowStyle={{
+          width: "80%",
+          justifyContent: "space-between",
+          marginVertical: 10
+        }}
+        textLength={5}
       />
     </View>
   );
@@ -50,18 +69,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
-  },
-  input: {
-    padding: 10,
-    backgroundColor: "#ddd",
-    width: "50%",
-    borderRadius: 20,
-    fontSize: 20,
-    letterSpacing: 20,
-    textAlign: "center",
-  },
+    justifyContent: "center"
+  }
 });
+
 
 ```
 
@@ -69,7 +80,7 @@ const styles = StyleSheet.create({
 <img src="https://github.com/usmangurowa/RNScreenKeyboard/blob/main/.github/example.jpg" height="500" />
 
 
-# Props
+<!-- # Props
 
 | Name | Type | Default | Description |
 | ------ | ------ | ------- | ----------- |
@@ -81,7 +92,7 @@ const styles = StyleSheet.create({
 | BackSpaceComponent | React.ReactNode | backspace image
 | Left | React.ReactNode |
 | Center | React.ReactNode |
-| Right | React.ReactNode |
+| Right | React.ReactNode | -->
 
 
 ## License
