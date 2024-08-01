@@ -1,6 +1,6 @@
 {
   "name": "rn-code-input",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React-Native Code input implementation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -44,7 +44,5 @@
     }
   ],
   "license": "ISC",
-  "dependencies": {
-    "rn-screen-keyboard": "^1.0.0"
-  }
+  "dependencies": {}
 }
