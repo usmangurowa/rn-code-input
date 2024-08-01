@@ -1,104 +1,118 @@
-## React Native Screen Keyboard 
+## rn-code-input
 
-# Demo
-<img src="https://github.com/usmangurowa/RNScreenKeyboard/blob/main/.github/demo.gif" height="500" />
+This package provides a React Native component for creating a secure and customizable code input field. It allows users to enter a series of digits or characters and provides visual feedback as they type.
 
+### Features
 
-React Native Screen Keyboard is a virutal screen keyboard implementation for React Native. It is fully customizable, the last row of the keys can be completely customized or changed to fit perfectly with your projects.
+* **Secure Input:** The component displays a mask (e.g., ●) over the entered characters, improving security for one-time passwords (OTPs) or PINs.
+* **Customization:** You can customize the appearance of individual code boxes using props like `activeBoxStyle`, `inActiveBoxStyle`, `textStyle`, and `boxStyle`.
+* **Flexibility:** Set the desired code length with the `length` prop.
+* **Optional Soft Keyboard Focus:** Control whether the soft keyboard appears automatically when the component receives focus with the `showSoftInputOnFocus` prop.
 
-_**It support's Expo**_
-## Installation 
-#### npm
+### Installation
 
-```sh
-npm i rn-code-input
+```bash
+npm install rn-code-input
 ```
-#### yarn
 
-```sh
+or
+
+```bash
 yarn add rn-code-input
 ```
 
-## Example
+### Usage
 
-```sh
-import React from "react";
-import { StyleSheet, View } from "react-native";
+Import the `RNCodeInput` component in your React Native project:
 
-import RNScreenKeyboard from "rn-screen-keyboard";
+```javascript
+import RNCodeInput from "rn-code-input";
+```
+
+**Basic Usage:**
+
+```javascript
+import React, { useState } from "react";
+import { View } from "react-native";
+
 import RNCodeInput from "rn-code-input";
 
-export default function App() {
-  const [value, setValue] = React.useState<string>("");
+const App = () => {
+  const [value, setValue] = useState("");
+
+  const handleChange = (text) => setValue(text);
+
   return (
-    <View style={styles.container}>
+    <View>
+      <RNCodeInput value={value} length={6} onChange={handleChange} />
+    </View>
+  );
+};
+
+export default App;
+```
+
+### Props
+
+**RNCodeInput Props:**
+
+* `value`: (string) - The current entered code.
+* `onChange`: (function) - Callback function triggered when the code changes.
+* `length`: (number) - (Optional) The desired number of code boxes (default: 6).
+* `hide`: (boolean) - (Optional) Whether to display a mask over the entered characters (default: false).
+* `showSoftInputOnFocus`: (boolean) - (Optional) Whether to show the soft keyboard automatically when the component receives focus (default: false).
+* `activeBoxStyle`: (ViewStyle) - (Optional) Styles applied to the active code box (e.g., when focused).
+* `inActiveBoxStyle`: (ViewStyle) - (Optional) Styles applied to inactive code boxes.
+* `mask`: (string) - (Optional) The character to display as a mask for entered characters (default: ●).
+* `textStyle`: (TextStyle) - (Optional) Styles applied to the text displayed within the code boxes.
+* `boxStyle`: (ViewStyle) - (Optional) Styles applied to individual code boxes.
+* `style`: (ViewStyle) - (Optional) Styles applied to the overall container view.
+
+**CodeBox Props:** (These props are passed internally and not intended for direct use)
+
+* `value`: (string) - The character entered in this specific code box.
+* `values`: (string) - The entire entered code value.
+* `index`: (number) - The index of this specific code box within the group.
+* `hide`: (boolean) - Whether to display a mask in this code box.
+* `activeBoxStyle`: (ViewStyle) - Styles applied to the active code box.
+* `inActiveBoxStyle`: (ViewStyle) - Styles applied to the inactive code box.
+* `mask`: (string) - The character to display as a mask.
+* `textStyle`: (TextStyle) - Styles applied to the text displayed within the code box.
+* `boxStyle`: (ViewStyle) - Styles applied to this specific code box.
+
+### Example
+
+This example demonstrates a basic code input with a custom active box style:
+
+```javascript
+import React, { useState } from "react";
+import { View } from "react-native";
+
+import RNCodeInput from "rn-code-input";
+
+const App = () => {
+  const [value, setValue] = useState("");
+
+  const handleChange = (text) => setValue(text);
+
+  return (
+    <View>
       <RNCodeInput
         value={value}
         length={5}
-        activeBoxStyle={{
-          borderColor: "red"
-        }}
-        inActiveBoxStyle={{
-          borderColor: "gray"
-        }}
-        boxStyle={{
-          borderRadius: 99,
-          marginHorizontal: 5
-        }}
+        onChange={handleChange}
+        activeBoxStyle={{ borderColor: "red" }}
+        inActiveBoxStyle={{ borderColor: "gray" }}
+        boxStyle={{ borderRadius: 99, marginHorizontal: 5 }}
         hide
-      />
-      <RNScreenKeyboard
-        value={value}
-        onKeyPress={setValue}
-        cellStyle={{
-          borderRadius: 99
-        }}
-        Footer={null}
-        rowStyle={{
-          width: "80%",
-          justifyContent: "space-between",
-          marginVertical: 10
-        }}
-        textLength={5}
       />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
-
-
+export default App;
 ```
 
+### Contributing
 
-<img src="https://github.com/usmangurowa/RNScreenKeyboard/blob/main/.github/example.jpg" height="500" />
-
-
-<!-- # Props
-
-| Name | Type | Default | Description |
-| ------ | ------ | ------- | ----------- |
-| cellStyle | ViewStyle | 
-| textStyle | TextStyle |
-| rowStyle | ViewStyle | 
-| onKeyPress | func | 
-| backspaceTint | string | black
-| BackSpaceComponent | React.ReactNode | backspace image
-| Left | React.ReactNode |
-| Center | React.ReactNode |
-| Right | React.ReactNode | -->
-
-
-## License
-
-MIT
-
-MIT License
-
-Copyright (c) 2022 Usman Hassan
+Feel free to submit pull requests for bug fixes or improvements to this package.
