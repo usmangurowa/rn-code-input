@@ -1,0 +1,50 @@
+{
+  "name": "rn-code-input",
+  "version": "1.0.0",
+  "description": "React-Native Code input implementation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-native": "^0.73.0",
+    "react": "^18.3.1",
+    "react-native": "^0.74.4",
+    "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "homepage": "https://github.com/usmangurowa/rn-code-input#readme",
+  "bugs": {
+    "url": "https://github.com/usmangurowa/rn-code-input/issues",
+    "email": "usmanhassangu@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/usmangurowa/rn-code-input.git"
+  },
+  "keywords": [
+    "react-native code input",
+    "react-native otp",
+    "otp input",
+    "react",
+    "react-native"
+  ],
+  "author": "Usman Hassan",
+  "contributors": [
+    {
+      "name": "Usman Hassan",
+      "email": "usmanhassangu@gmail.com",
+      "url": "https://github.com/usmangurowa",
+      "twitter": "https://twitter.com/usmangurowa"
+    }
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "rn-screen-keyboard": "^1.0.0"
+  }
+}
