@@ -1,6 +1,6 @@
 {
   "name": "rn-code-input",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "React-Native Code input implementation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
