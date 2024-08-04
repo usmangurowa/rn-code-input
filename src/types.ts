@@ -8,6 +8,7 @@ export interface RNCodeInputProps {
   showSoftInputOnFocus?: boolean;
   activeBoxStyle?: ViewStyle;
   inActiveBoxStyle?: ViewStyle;
+  filledBoxStyle?:ViewStyle
   mask?: string;
   textStyle?: TextStyle;
   boxStyle?: ViewStyle;

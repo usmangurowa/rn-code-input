@@ -7,31 +7,24 @@ const RnCodeInput = ({
   onChange,
   value,
   length = 6,
-  hide = false,
   showSoftInputOnFocus = false,
-  activeBoxStyle,
-  inActiveBoxStyle,
-  mask = "●",
-  textStyle,
-  boxStyle,
-  style
+  style,
+  ...props
 }: RNCodeInputProps) => {
-  const getValue = React.useCallback((index: number) => value[index] || "", [value]);
+  const getValue = React.useCallback(
+    (index: number) => value[index] || "",
+    [value]
+  );
 
   return (
     <View style={[styles.container, style]}>
       {Array.from({ length }).map((_, index) => (
         <CodeBox
           key={index}
-          hide={hide}
           index={index}
           value={getValue(index)}
           values={value}
-          activeBoxStyle={activeBoxStyle}
-          inActiveBoxStyle={inActiveBoxStyle}
-          mask={mask}
-          textStyle={textStyle}
-          boxStyle={boxStyle}
+          {...props}
         />
       ))}
 
@@ -56,11 +49,15 @@ const CodeBox = ({
   hide = false,
   activeBoxStyle,
   inActiveBoxStyle,
-  mask,
+  mask = "●",
   textStyle,
-  boxStyle
+  boxStyle,
+  filledBoxStyle
 }: CodeBoxProps) => {
-  const isActive = React.useMemo(() => values.length === index, [values, index]);
+  const { isActive, isFilled } = React.useMemo(
+    () => ({ isActive: values.length === index, isFilled: !!value }),
+    [values, index]
+  );
   return (
     <View
       key={index}
@@ -68,9 +65,13 @@ const CodeBox = ({
         styles.box,
         { borderColor: isActive ? "#000" : "#ccc" },
         boxStyle,
-        isActive ? activeBoxStyle : inActiveBoxStyle
-      ]}>
-      {!!value && <Text style={[styles.text, textStyle]}>{hide ? mask : value}</Text>}
+        isActive ? activeBoxStyle : inActiveBoxStyle,
+        isFilled ? filledBoxStyle : {}
+      ]}
+    >
+      {!!value && (
+        <Text style={[styles.text, textStyle]}>{hide ? mask : value}</Text>
+      )}
     </View>
   );
 };
