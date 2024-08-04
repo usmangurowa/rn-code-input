@@ -76,6 +76,7 @@ export default App;
 * `hide`: (boolean) - Whether to display a mask in this code box.
 * `activeBoxStyle`: (ViewStyle) - Styles applied to the active code box.
 * `inActiveBoxStyle`: (ViewStyle) - Styles applied to the inactive code box.
+* `filledBoxStyle`: (ViewStyle) - Styles applied to the filled boxes.
 * `mask`: (string) - The character to display as a mask.
 * `textStyle`: (TextStyle) - Styles applied to the text displayed within the code box.
 * `boxStyle`: (ViewStyle) - Styles applied to this specific code box.
@@ -103,6 +104,7 @@ const App = () => {
         onChange={handleChange}
         activeBoxStyle={{ borderColor: "red" }}
         inActiveBoxStyle={{ borderColor: "gray" }}
+        filledBoxStyle={{ borderColor: "green" }}
         boxStyle={{ borderRadius: 99, marginHorizontal: 5 }}
         hide
       />
