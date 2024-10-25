@@ -1,4 +1,4 @@
-import { TextStyle, ViewStyle } from "react-native";
+import { TextInputProps, TextStyle, ViewStyle } from "react-native";
 
 export interface RNCodeInputProps {
   value: string;
@@ -8,11 +8,14 @@ export interface RNCodeInputProps {
   showSoftInputOnFocus?: boolean;
   activeBoxStyle?: ViewStyle;
   inActiveBoxStyle?: ViewStyle;
-  filledBoxStyle?:ViewStyle
+  filledBoxStyle?: ViewStyle;
   mask?: string;
   textStyle?: TextStyle;
   boxStyle?: ViewStyle;
   style?: ViewStyle;
+  inputProps?: Partial<
+    Omit<TextInputProps, "onChange" | "value" | "maxLength">
+  >;
 }
 
 export interface CodeBoxProps extends Partial<RNCodeInputProps> {

@@ -9,6 +9,7 @@ const RnCodeInput = ({
   length = 6,
   showSoftInputOnFocus = false,
   style,
+  inputProps,
   ...props
 }: RNCodeInputProps) => {
   const getValue = React.useCallback(
@@ -35,6 +36,7 @@ const RnCodeInput = ({
         onChangeText={onChange}
         value={value}
         maxLength={length}
+        {...inputProps}
       />
     </View>
   );
