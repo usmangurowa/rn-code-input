@@ -67,6 +67,7 @@ export default App;
 * `textStyle`: (TextStyle) - (Optional) Styles applied to the text displayed within the code boxes.
 * `boxStyle`: (ViewStyle) - (Optional) Styles applied to individual code boxes.
 * `style`: (ViewStyle) - (Optional) Styles applied to the overall container view.
+* `inputProps`: (Partial<Omit<TextInputProps, "onChange" | "value" | "maxLength">>) - (Optional) TextInputProps for the TextInput component.
 
 **CodeBox Props:** (These props are passed internally and not intended for direct use)
 
